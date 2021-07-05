@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { RiInformationLine } from 'react-icons/ri';
-import { AiOutlineStar } from 'react-icons/ai';
 
 export const Container = styled.div`
-
-  background-color: var(--white);
-  border-radius: 10px;
+  width: 90%;
   padding: 20px;
+  border-radius: 10px;
+  background-color: var(--white);
+  box-shadow: 4px 4px 13px 0px rgba(67,67,67,0.32);
 `;
 
 export const LeftWrapper = styled.div`
@@ -23,20 +23,12 @@ export const CharacterName = styled.h3`
 
 export const CharacterImage = styled.img`
   width: 180px;
+  max-height: 350px;
+  border-radius: 10px;
 `;
 
 export const RightWrapper = styled.div`
   margin-top: 50px;
-
-  button {
-    display: flex;
-    align-items: center;
-    margin-bottom: 8px;
-
-    :hover {
-      cursor: pointer;
-    }
-  }
 `;
 
 export const PowersWrapper = styled.div`
@@ -57,7 +49,7 @@ export const PowersTitle = styled.h4`
   margin-bottom: 10px;
 `;
 
-export const PowersSubWrapper = styled.div`
+export const PowersImageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +64,7 @@ export const PowerImage = styled.img`
 export const Row = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 `;
 
 export const GenderIcon = styled(RiInformationLine)`
@@ -88,15 +80,27 @@ export const GenderText = styled.span`
   color: var(--primary);
 `;
 
-export const FavIcon = styled(AiOutlineStar)`
-  width: 24px;
-  height: 24px;
-  color: var(--primary);
-`;
-
 export const FavText = styled.span`
   font-size: 16px;
   margin-left: 3px;
   font-weight: bold;
   color: var(--primary);
+`;
+
+interface FavoriteButtonProps {
+  handleColor: boolean;
+}
+
+export const FavoriteButton = styled.button<FavoriteButtonProps>`
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+
+  :hover {
+    cursor: pointer;
+  }
+
+  ${FavText} {
+    color: ${props => props.handleColor ? '#6C63FF' : '#3F3D56'};
+  }
 `;

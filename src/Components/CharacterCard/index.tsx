@@ -1,58 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
-import { 
-  Container, 
-  LeftWrapper, 
-  CharacterName, 
-  CharacterImage, 
+import { PsiPowersEntity } from '../../services/useAPI';
+import {
+  Container,
+  LeftWrapper,
+  CharacterName,
+  CharacterImage,
   RightWrapper,
   PowersWrapper,
   PowersTitle,
-  PowersSubWrapper,
+  PowersImageWrapper,
   PowerImage,
   Row,
   GenderIcon,
   GenderText,
-  FavIcon,
+  FavoriteButton,
   FavText
 } from './styles';
 
-import aa from '../../assets/razputin-aquato.png';
-import clairvoyance from '../../assets/clairvoyance.png';
-
 interface CharacterCardProps {
-
+  name: string;
+  img: string;
+  psiPowers: Array<PsiPowersEntity>;
+  gender: string;
 }
 
-const CharacterCard: React.FC<CharacterCardProps> = () => {
+const CharacterCard: React.FC<CharacterCardProps> = ({ name, img, psiPowers, gender }) => {
+  const [isFavorite, setIsFavorite] = useState(false);
+
   return (
     <Container>
       <LeftWrapper>
-        <CharacterName>{'razputin aquato'}</CharacterName>
-        <CharacterImage src={aa} />
+        <CharacterName>{name}</CharacterName>
+        <CharacterImage src={img} alt={name} />
       </LeftWrapper>
 
       <RightWrapper>
         <PowersWrapper>
           <PowersTitle>Powers</PowersTitle>
-          <PowersSubWrapper>
-            <PowerImage src={clairvoyance} />
-            <PowerImage src={clairvoyance} />
-            <PowerImage src={clairvoyance} />
-            <PowerImage src={clairvoyance} />
-            <PowerImage src={clairvoyance} />
-          </PowersSubWrapper>
+          <PowersImageWrapper>
+            {psiPowers.map(power => <PowerImage src={power.img} alt={power.name} />)}
+          </PowersImageWrapper>
         </PowersWrapper>
 
         <Row>
           <GenderIcon />
-          <GenderText>{`Gender: Male`}</GenderText>
+          <GenderText>{`Gender: ${gender}`}</GenderText>
         </Row>
 
-        <button>
-          <FavIcon />
+        <FavoriteButton handleColor={isFavorite} onClick={() => setIsFavorite(!isFavorite)}>
+          {isFavorite ? <AiFillStar size={24} color={'#6C63FF'} /> : <AiOutlineStar size={24} color={'#3F3D56'} />}
           <FavText>Favorite</FavText>
-        </button>
+        </FavoriteButton>
       </RightWrapper>
     </Container>
   );
