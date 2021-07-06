@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
 import { RootState } from '../../Redux/FavoritesReducer';
-import { PsiPowersEntity } from '../../services/useAPI';
+import { PsiPowersEntity } from '../../services/TypesAPI';
 import {
   Container,
   LeftWrapper,
@@ -26,18 +26,18 @@ export interface CharacterCardProps {
   img: string;
   psiPowers: Array<PsiPowersEntity>;
   gender: string;
-  id: string;
 }
 
-const CharacterCard: React.FC<CharacterCardProps> = ({ name, img, psiPowers, gender, id }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+const CharacterCard: React.FC<CharacterCardProps> = ({ name, img, psiPowers, gender }) => {
+  const [isFavorite, setIsFavorite] = useState(true);
   const dispatch = useDispatch();
   const favoriteIdArr = useSelector((state: RootState) => state.FavoritesReducer.favorites);
 
   function addFavorite() {
-    const check = favoriteIdArr.includes(id);
+    let check = favoriteIdArr.includes(name);
+    check ? dispatch({ type: 'DELETE_FAVORITES', value: name }) : dispatch({ type: 'ADD_FAVORITES', value: name });
+
     setIsFavorite(check);
-    check ? dispatch({ type: 'DELETE_FAVORITES', value: id }) : dispatch({ type: 'ADD_FAVORITES', value: id });
   }
 
   return (
@@ -61,7 +61,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ name, img, psiPowers, gen
         </Row>
 
         <FavoriteButton handleColor={isFavorite} onClick={addFavorite}>
-          {isFavorite ? <AiFillStar size={24} color={'#524db4'} /> : <AiOutlineStar size={24} color={'#3F3D56'} />}
+          {isFavorite ? <AiOutlineStar size={24} color={'#3F3D56'} /> : <AiFillStar size={24} color={'#524db4'} />}
           <FavText>Favorite</FavText>
         </FavoriteButton>
       </RightWrapper>

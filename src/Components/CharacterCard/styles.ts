@@ -4,17 +4,28 @@ import { RiInformationLine } from 'react-icons/ri';
 export const Container = styled.div`
   width: 90%;
   padding: 20px;
-  margin: 15px 0;
+  margin: 15px;
   border-radius: 10px;
 
   background-color: var(--white);
   box-shadow: 4px 4px 13px 0px rgba(67,67,67,0.32);
+
+  @media(min-width: 1024px) {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+    min-height: 60vh;
+  }
 `;
 
 export const LeftWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  @media(min-width: 1024px) {
+    width: 45%;
+  }
 `;
 
 export const CharacterName = styled.h3`
@@ -31,6 +42,10 @@ export const CharacterImage = styled.img`
 
 export const RightWrapper = styled.div`
   margin-top: 50px;
+
+  @media(min-width: 1024px) {
+    width: 55%;
+  }
 `;
 
 export const PowersWrapper = styled.div`
@@ -42,6 +57,10 @@ export const PowersWrapper = styled.div`
   background-color: var(--darkWhite);
   border-radius: 10px;
   margin-bottom: 5px;
+
+  @media(min-width: 1024px) {
+    min-height: 200px;
+  }
 `;
 
 export const PowersTitle = styled.h4`
@@ -89,7 +108,7 @@ export const FavText = styled.span`
 `;
 
 interface FavoriteButtonProps {
-  handleColor: boolean;
+  handleColor: boolean | undefined;
 }
 
 export const FavoriteButton = styled.button<FavoriteButtonProps>`
@@ -102,6 +121,6 @@ export const FavoriteButton = styled.button<FavoriteButtonProps>`
   }
 
   ${FavText} {
-    color: ${props => props.handleColor ? '#6C63FF' : '#3F3D56'};
+    color: ${props => props.handleColor ? '#3F3D56' : '#6C63FF'};
   }
 `;

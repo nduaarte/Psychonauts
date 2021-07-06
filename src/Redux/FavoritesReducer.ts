@@ -8,7 +8,7 @@ const INITIAL_STATE = {
   favorites: []
 };
 
-export default function FavoritesReducer(state = INITIAL_STATE, action: { type: any; value: any }) {
+export default function FavoritesReducer(state = INITIAL_STATE, action: { type: string; value: string }) {
   switch (action.type) {
     case 'ADD_FAVORITES':
       return { ...state, favorites: [...state.favorites, action.value] };
