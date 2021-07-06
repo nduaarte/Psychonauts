@@ -4,7 +4,9 @@ import { RiInformationLine } from 'react-icons/ri';
 export const Container = styled.div`
   width: 90%;
   padding: 20px;
+  margin: 15px 0;
   border-radius: 10px;
+
   background-color: var(--white);
   box-shadow: 4px 4px 13px 0px rgba(67,67,67,0.32);
 `;
@@ -39,7 +41,6 @@ export const PowersWrapper = styled.div`
   border: 2px solid var(--lightGrey);
   background-color: var(--darkWhite);
   border-radius: 10px;
-  padding: 10px;
   margin-bottom: 5px;
 `;
 
@@ -58,7 +59,7 @@ export const PowersImageWrapper = styled.div`
 
 export const PowerImage = styled.img`
   width: 60px;
-  margin: 0 10px;
+  margin: 8px;
 `;
 
 export const Row = styled.div`

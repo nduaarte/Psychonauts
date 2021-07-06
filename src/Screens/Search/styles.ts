@@ -17,14 +17,18 @@ export const Title = styled.h1`
   margin-bottom: 30px;
 `;
 
+export const Row = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 60px;
+`;
+
 export const SearchWrapper = styled.div`
-  width: 90%;
   display: flex;
   align-items: center;
 
   padding: 10px;
   border-radius: 5px;
-  margin-bottom: 60px;
   background-color: var(--white);
   box-shadow: 0px 3px 7px 1px rgba(0,0,0,0.1);
 `;
@@ -37,7 +41,26 @@ export const SearchIcon = styled(HiOutlineSearch)`
 `;
 
 export const Vector = styled.img`
-  align-self: flex-end;
   width: 100%;
+`;
+
+
+
+
+export const ButtonFavorites = styled.button`
+  padding: 10px;
+  margin-left: 15px;
+  border-radius: 5px;
+
+  color: var(--white);
+  background-color: var(--secondary);
+  box-shadow: 0px 3px 7px 1px rgba(0,0,0,0.1);
+
+  :hover {
+    box-shadow: 0px 3px 10px 3px rgba(0,0,0,0.2);
+    cursor: pointer;
+
+    transition: 200ms;
+  }
 `;
 

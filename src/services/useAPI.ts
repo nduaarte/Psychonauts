@@ -17,20 +17,19 @@ export interface PsiPowersEntity {
   name: string;
 }
 
-function useAPI(charName: string) {
-  const baseURL = 'https://psychonauts-api.herokuapp.com/api/characters?name=';
-  const [character, setCharacter] = useState<CharacterProps>();
+function useAPI() {
+  const baseURL = 'https://psychonauts-api.herokuapp.com/api/characters';
+  const [character, setCharacter] = useState<CharacterProps[]>([]);
 
   useEffect(() => {
     async function fetchCharacter() {
-      const { data } = await axios(`${baseURL}${charName}`);
+      const { data } = await axios(baseURL);
       setCharacter(data);
     }
   
     fetchCharacter();
-  }, [charName]);
+  }, []);
 
-  if(charName === '') return null;
   return character;
 }
 

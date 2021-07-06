@@ -1,18 +1,32 @@
-import { ReactNode } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
-import { Container } from './styles';
+import useAPI from '../../services/useAPI';
+import CharacterCard from '../../Components/CharacterCard';
+import { RootState } from '../../Redux/FavoritesReducer';
+import { Container, Title, CardsWrapper } from './styles';
 
-interface FavoritesProps {
-  children: ReactNode;
-}
+const Favorites: React.FC = () => {
+  const favoritesId = useSelector((state: RootState) => state.FavoritesReducer.favorites);
+  const charactersArr = useAPI().map(char => char._id);
 
-function Favorites({ children }: FavoritesProps) {
-  return (
+
+  for(let i=0; i < charactersArr.length; i++) {
+    let vrau = favoritesId.find(item => item === charactersArr[i]);
+
+    console.log(vrau);
+    
+  }
+  
+
+  return(
     <Container>
-      <h1>Favorites</h1>
-      {children}
+      <Title>Favorites</Title>
+      <CardsWrapper>
+        
+      </CardsWrapper>
     </Container>
   );
-};
+}
 
 export default Favorites;
