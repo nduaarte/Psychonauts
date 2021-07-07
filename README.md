@@ -1,7 +1,7 @@
 # Psychonauts
 
 #### Produção: https://mypyschonauts.vercel.app/
-### Protótipo: https://www.figma.com/file/NVSr7k9PmpS4wVJvlBED3c/psychonauts
+#### Protótipo: https://www.figma.com/file/NVSr7k9PmpS4wVJvlBED3c/psychonauts
 OBS: a API responde muito rápido, então a animação de Loading não fica notável na maioria das vezes.
 
 ### Tecnologias usadas
